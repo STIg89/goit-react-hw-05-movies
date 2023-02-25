@@ -1,5 +1,6 @@
 import { Character, Image, Item, List, Name } from './CastList.styled';
 import noPoster from 'img/sorry.png';
+import PropTypes from 'prop-types';
 
 export const CastList = ({ cast }) => {
   return (
@@ -24,4 +25,15 @@ export const CastList = ({ cast }) => {
       })}
     </List>
   );
+};
+
+CastList.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      profile_path: PropTypes.string,
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      character: PropTypes.string.isRequired,
+    })
+  ),
 };

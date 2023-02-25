@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Wrapper, Input, Icon, Form, Btn } from './SearchForm.styled';
+import PropTypes from 'prop-types';
 
 export const SearchForm = ({ onSubmit }) => {
   const [value, setValue] = useState('');
@@ -31,4 +32,8 @@ export const SearchForm = ({ onSubmit }) => {
       </Form>
     </Wrapper>
   );
+};
+
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };

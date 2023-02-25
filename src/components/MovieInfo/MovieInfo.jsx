@@ -8,6 +8,7 @@ import {
   Description,
 } from './MovieInfo.styled';
 import noPoster from 'img/sorry.png';
+import PropTypes from 'prop-types';
 
 export const MovieInfo = ({
   movieInfo: { poster_path, title, vote_average, genres, overview },
@@ -36,4 +37,8 @@ export const MovieInfo = ({
       </InfoWrap>
     </Wrapper>
   );
+};
+
+MovieInfo.propTypes = {
+  movieInfo: PropTypes.object.isRequired,
 };
