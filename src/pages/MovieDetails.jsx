@@ -4,13 +4,11 @@ import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { useState, useEffect, Suspense } from 'react';
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { getMovieDetails } from 'services/fetchAPI';
-import { Wrapper } from './MovieDetails.styled';
 import { Loader } from 'utils/spinner/spinner';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const [onLoad, setOnLoad] = useState(false);
   const location = useLocation();
   const backPath = location.state?.from ?? '/';
 
@@ -23,7 +21,7 @@ const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <Wrapper>
+    <main style={{ padding: '0 60px 40px 60px' }}>
       {movieDetails && (
         <>
           <BackLink to={backPath}>Go back</BackLink>
@@ -35,7 +33,7 @@ const MovieDetails = () => {
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-    </Wrapper>
+    </main>
   );
 };
 export default MovieDetails;
