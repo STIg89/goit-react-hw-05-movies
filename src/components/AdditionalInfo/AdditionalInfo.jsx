@@ -1,14 +1,17 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Title, Wrapper, Link, LinkWrap } from './AdditionalInfo.styled';
 
-export const AdditionalInfo = () => {
+export const AdditionalInfo = ({ backPath }) => {
   return (
-    <div>
-      <h2>Additional information</h2>
-      <div>
-        <NavLink to="cast">Cast</NavLink>
-        <NavLink to="reviews">Reviews</NavLink>
-      </div>
-      <Outlet />
-    </div>
+    <Wrapper>
+      <Title>Additional information</Title>
+      <LinkWrap>
+        <Link to="cast" state={{ from: backPath }}>
+          Cast
+        </Link>
+        <Link to="reviews" state={{ from: backPath }}>
+          Reviews
+        </Link>
+      </LinkWrap>
+    </Wrapper>
   );
 };

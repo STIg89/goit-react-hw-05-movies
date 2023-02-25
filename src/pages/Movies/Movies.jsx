@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 import { searchMovies } from 'services/fetchAPI';
+import { useSearchParams } from 'react-router-dom';
 
 export const Movies = () => {
-  const [searchValue, setSearchValue] = useState(null);
   const [movies, setMovies] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchValue = searchParams.get('query') ?? '';
 
   useEffect(() => {
     if (!searchValue) return;
@@ -17,7 +19,7 @@ export const Movies = () => {
   }, [searchValue]);
 
   const onInputSearch = value => {
-    setSearchValue(value);
+    setSearchParams({ query: value });
   };
 
   return (
