@@ -1,22 +1,23 @@
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 import { getTrendingMovies } from 'services/fetchAPI';
-import { Title } from './Home.styled';
+import { Loader } from 'utils/spinner/spinner';
 
 const Home = () => {
   const [trendingFilms, setTrendingFilms] = useState(null);
+  const [onLoad, setOnLoad] = useState(false);
 
   useEffect(() => {
-    const fetchTrendingMovies = async () => {
-      const data = await getTrendingMovies();
-      setTrendingFilms(data);
-    };
-    fetchTrendingMovies();
+    setOnLoad(true);
+    getTrendingMovies().then(response => {
+      setTrendingFilms([...response]);
+      setOnLoad(false);
+    });
   }, []);
 
   return (
     <main>
-      {trendingFilms && <Title>Trending today</Title>}
+      {onLoad && <Loader />}
       {trendingFilms && <MoviesList movies={trendingFilms} />}
     </main>
   );

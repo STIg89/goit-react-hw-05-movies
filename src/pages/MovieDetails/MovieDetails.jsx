@@ -9,7 +9,8 @@ import { Loader } from 'utils/spinner/spinner';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  const [movieDetails, setMovieDetails] = useState();
+  const [movieDetails, setMovieDetails] = useState(null);
+  const [onLoad, setOnLoad] = useState(false);
   const location = useLocation();
   const backPath = location.state?.from ?? '/';
 
@@ -24,12 +25,13 @@ const MovieDetails = () => {
   return (
     <Wrapper>
       {movieDetails && (
-        <Suspense fallback={<Loader />}>
+        <>
           <BackLink to={backPath}>Go back</BackLink>
           <MovieInfo movieInfo={movieDetails} />
           <AdditionalInfo backPath={backPath} />
-        </Suspense>
+        </>
       )}
+
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>

@@ -7,19 +7,17 @@ import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [movies, setMovies] = useState(null);
-  const [spinner, setSpinner] = useState(false);
+  const [onLoad, setOnLoad] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchValue = searchParams.get('query') ?? '';
 
   useEffect(() => {
     if (!searchValue) return;
-    setSpinner(true);
-    const fetchSearchMovies = async () => {
-      const data = await searchMovies(searchValue);
-      setMovies(data);
-    };
-    fetchSearchMovies();
-    setSpinner(false);
+    setOnLoad(true);
+    searchMovies(searchValue).then(response => {
+      setMovies([...response]);
+      setOnLoad(false);
+    });
   }, [searchValue]);
 
   const onInputSearch = value => {
@@ -29,7 +27,7 @@ const Movies = () => {
   return (
     <main>
       <SearchForm onSubmit={onInputSearch} />
-      {spinner && <Loader />}
+      {onLoad && <Loader />}
       {movies && <MoviesList movies={movies} />}
     </main>
   );
