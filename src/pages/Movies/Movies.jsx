@@ -12,8 +12,8 @@ const Movies = () => {
   const searchValue = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    setSpinner(true);
     if (!searchValue) return;
+    setSpinner(true);
     const fetchSearchMovies = async () => {
       const data = await searchMovies(searchValue);
       setMovies(data);
