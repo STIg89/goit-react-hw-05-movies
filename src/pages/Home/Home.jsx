@@ -1,8 +1,9 @@
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 import { getTrendingMovies } from 'services/fetchAPI';
+import { Title } from './Home.styled';
 
-export const Home = () => {
+const Home = () => {
   const [trendingFilms, setTrendingFilms] = useState(null);
 
   useEffect(() => {
@@ -13,5 +14,11 @@ export const Home = () => {
     fetchTrendingMovies();
   }, []);
 
-  return <main>{trendingFilms && <MoviesList movies={trendingFilms} />}</main>;
+  return (
+    <main>
+      {trendingFilms && <Title>Trending today</Title>}
+      {trendingFilms && <MoviesList movies={trendingFilms} />}
+    </main>
+  );
 };
+export default Home;

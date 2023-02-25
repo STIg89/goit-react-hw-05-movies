@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { getMovieCredits } from 'services/fetchAPI';
 import { CastList } from 'components/CastList/CastList';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [movieCast, setMovieCast] = useState();
 
@@ -17,3 +17,4 @@ export const Cast = () => {
 
   return <>{movieCast && <CastList cast={movieCast} />}</>;
 };
+export default Cast;

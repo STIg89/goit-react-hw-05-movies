@@ -1,4 +1,5 @@
 import { Character, Image, Item, List, Name } from './CastList.styled';
+import noPoster from 'img/sorry.png';
 
 export const CastList = ({ cast }) => {
   return (
@@ -7,7 +8,11 @@ export const CastList = ({ cast }) => {
         return (
           <Item key={id}>
             <Image
-              src={`https://image.tmdb.org/t/p/w200/${profile_path}`}
+              src={
+                profile_path !== null
+                  ? `https://image.tmdb.org/t/p/w200/${profile_path}`
+                  : noPoster
+              }
               alt={name}
             />
             <Name>{name}</Name>

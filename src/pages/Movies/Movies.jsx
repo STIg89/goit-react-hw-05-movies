@@ -4,7 +4,7 @@ import { SearchForm } from 'components/SearchForm/SearchForm';
 import { searchMovies } from 'services/fetchAPI';
 import { useSearchParams } from 'react-router-dom';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchValue = searchParams.get('query') ?? '';
@@ -29,3 +29,4 @@ export const Movies = () => {
     </main>
   );
 };
+export default Movies;

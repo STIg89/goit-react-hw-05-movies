@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { getMovieReviews } from 'services/fetchAPI';
 import { ReviewsList } from 'components/ReviewsList/ReviewsList';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [movieReviews, setMovieReviews] = useState();
 
@@ -17,3 +17,4 @@ export const Reviews = () => {
 
   return <>{movieReviews && <ReviewsList reviews={movieReviews} />}</>;
 };
+export default Reviews;

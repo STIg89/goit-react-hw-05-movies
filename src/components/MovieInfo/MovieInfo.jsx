@@ -7,6 +7,7 @@ import {
   DescriptionName,
   Description,
 } from './MovieInfo.styled';
+import noPoster from 'img/sorry.png';
 
 export const MovieInfo = ({
   movieInfo: { poster_path, title, vote_average, genres, overview },
@@ -15,7 +16,11 @@ export const MovieInfo = ({
     <Wrapper>
       <ImageWrap>
         <Image
-          src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+          src={
+            poster_path !== null
+              ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+              : noPoster
+          }
           alt={title}
         />
       </ImageWrap>

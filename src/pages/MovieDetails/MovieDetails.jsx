@@ -7,7 +7,7 @@ import { getMovieDetails } from 'services/fetchAPI';
 import { Wrapper } from './MovieDetails.styled';
 import { Loader } from 'utils/spinner/spinner';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState();
   const location = useLocation();
@@ -23,12 +23,17 @@ export const MovieDetails = () => {
 
   return (
     <Wrapper>
-      <BackLink to={backPath}>Go back</BackLink>
-      {movieDetails && <MovieInfo movieInfo={movieDetails} />}
-      <AdditionalInfo backPath={backPath} />
+      {movieDetails && (
+        <Suspense fallback={<Loader />}>
+          <BackLink to={backPath}>Go back</BackLink>
+          <MovieInfo movieInfo={movieDetails} />
+          <AdditionalInfo backPath={backPath} />
+        </Suspense>
+      )}
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </Wrapper>
   );
 };
+export default MovieDetails;
