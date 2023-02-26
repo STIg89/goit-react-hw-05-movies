@@ -17,4 +17,5 @@ const Cast = () => {
 
   return <>{movieCast && <CastList cast={movieCast} />}</>;
 };
+
 export default Cast;

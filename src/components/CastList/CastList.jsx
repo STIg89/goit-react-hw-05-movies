@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 export const CastList = ({ cast }) => {
   return (
     <List>
-      {cast.map(({ profile_path, id, name, character }) => {
+      {cast.map(({ profile_path, cast_id, name, character }) => {
         return (
-          <Item key={id}>
+          <Item key={cast_id}>
             <Image
               src={
                 profile_path !== null

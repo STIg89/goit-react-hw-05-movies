@@ -40,5 +40,9 @@ export const MovieInfo = ({
 };
 
 MovieInfo.propTypes = {
-  movieInfo: PropTypes.object.isRequired,
+  poster_path: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  vote_average: PropTypes.number,
+  genres: PropTypes.array,
+  overview: PropTypes.string,
 };
