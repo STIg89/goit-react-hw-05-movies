@@ -41,7 +41,7 @@ export const MovieInfo = ({
 
 MovieInfo.propTypes = {
   poster_path: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   vote_average: PropTypes.number,
   genres: PropTypes.array,
   overview: PropTypes.string,
